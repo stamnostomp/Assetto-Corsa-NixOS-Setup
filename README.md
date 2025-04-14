@@ -17,13 +17,13 @@ A Nix flake to easily set up Assetto Corsa with Content Manager and Custom Shade
 You can run this tool directly without cloning the repository:
 
 ```bash
-nix run github:your-username/assettocorsa-nixos-setup
+nix run github:stamnostomp/assettocorsa-nixos-setup
 ```
 
 Or clone the repository and run:
 
 ```bash
-git clone https://github.com/your-username/assettocorsa-nixos-setup.git
+git clone https://github.com/stamnostomp/assettocorsa-nixos-setup.git
 cd assettocorsa-nixos-setup
 nix run
 ```
@@ -59,7 +59,7 @@ nix run
 If Content Manager still can't find your Assetto Corsa installation after using the "Fix Content Manager Paths" option, you may need to manually point it to:
 
 ```
-/home/your-username/.local/share/Steam/steamapps/common/assettocorsa
+/home/stamnostomp/.local/share/Steam/steamapps/common/assettocorsa
 ```
 
 ### CSP not working properly
@@ -75,7 +75,7 @@ Check for the Start Menu shortcut issue using menu option 5. This is a common ca
 To work on this tool:
 
 ```bash
-git clone https://github.com/your-username/assettocorsa-nixos-setup.git
+git clone https://github.com/stamnostomp/assettocorsa-nixos-setup.git
 cd assettocorsa-nixos-setup
 nix develop
 assettocorsa-tool
