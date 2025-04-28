@@ -14,6 +14,7 @@ let
   diagnostics = import ./diagnostics.nix { inherit pkgs utils; };
   wine64Fix = import ./wine64-fix.nix { inherit pkgs utils; };
   steamLauncher = import ./steam-launcher.nix { inherit pkgs utils; };
+  cmUiFix = import ./cm-ui-fix.nix { inherit pkgs utils; };
 
   # Main script that incorporates all components
   main = import ./main.nix {
@@ -26,6 +27,7 @@ let
       diagnostics
       wine64Fix
       steamLauncher
+      cmUiFix
       ;
   };
 
@@ -40,5 +42,6 @@ in
     diagnostics
     wine64Fix
     steamLauncher
+    cmUiFix
     ;
 }

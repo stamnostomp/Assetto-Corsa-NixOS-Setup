@@ -10,6 +10,7 @@
   diagnostics,
   wine64Fix,
   steamLauncher,
+  cmUiFix,
 }:
 
 ''
@@ -22,6 +23,7 @@
   ${diagnostics}
   ${wine64Fix}
   ${steamLauncher}
+  ${cmUiFix}
 
   # Banner
   echo -e "''${BLUE}''${BOLD}"
@@ -55,6 +57,7 @@
     echo "10. Run advanced diagnostics and fixes"
     echo "11. Fix Wine 64-bit compatibility (for black screens)"
     echo "12. Setup Steam launch options"
+    echo "13. Fix Content Manager UI black boxes"
     echo "0. Exit"
 
     read -p "Enter your choice: " menu_choice
@@ -95,6 +98,9 @@
         ;;
       12)
         setup_steam_launch_options
+        ;;
+      13)
+        fix_cm_ui_rendering
         ;;
       0)
         section "Exiting"
