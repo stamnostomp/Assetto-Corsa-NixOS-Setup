@@ -1,5 +1,6 @@
 # Assetto Corsa NixOS Setup Tool
 
+
 A Nix flake to easily set up Assetto Corsa with Content Manager and Custom Shaders Patch on NixOS and other Linux distributions with Nix.
 
 ## Features
