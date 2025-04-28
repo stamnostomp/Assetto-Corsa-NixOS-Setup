@@ -7,7 +7,7 @@ A Nix flake to easily set up Assetto Corsa with Content Manager and Custom Shade
 - Interactive menu-based setup
 - Content Manager installation and configuration
 - Custom Shaders Patch (CSP) installation
-- DXVK support for better performance on AMD GPUs
+- Enhanced DXVK setup with multiple installation methods
 - Automatic path fixing for Content Manager
 - Multiple Steam installation path detection
 - Supports both App IDs used by Assetto Corsa (244210 and 244930)
@@ -47,10 +47,22 @@ nix run
 1. **Install/Update Content Manager**: Installs or updates the Content Manager for Assetto Corsa
 2. **Fix Content Manager Paths**: Fixes path configuration for Content Manager to find your Assetto Corsa installation
 3. **Install Custom Shaders Patch (CSP)**: Installs the Custom Shaders Patch for improved graphics
-4. **Install DXVK**: Improves performance with AMD GPUs
+4. **Install DXVK**: Improves performance with AMD GPUs using standard installation
 5. **Check for problematic shortcuts**: Removes shortcuts that can cause crashes
 6. **Reset Assetto Corsa to original**: Removes Content Manager and restores the original game executable
 7. **Show setup information**: Displays information about your current setup
+8. **Set or change Assetto Corsa path**: Change the path to your Assetto Corsa installation
+9. **Force DXVK installation**: Uses more aggressive methods to ensure DXVK is properly installed
+
+## DXVK Installation Improvements
+
+This tool provides enhanced DXVK installation with multiple methods:
+- Standard installation using winetricks
+- Manual DLL overrides directly in the Wine registry
+- Optional specific DXVK version (1.10.3 recommended for Assetto Corsa)
+- Force mode to fix potential issues with the standard installation
+
+If you experience graphics issues in Content Manager, try using option 9 to force DXVK installation.
 
 ## Troubleshooting
 
@@ -59,7 +71,7 @@ nix run
 If Content Manager still can't find your Assetto Corsa installation after using the "Fix Content Manager Paths" option, you may need to manually point it to:
 
 ```
-/home/stamnostomp/.local/share/Steam/steamapps/common/assettocorsa
+/home/yourusername/.local/share/Steam/steamapps/common/assettocorsa
 ```
 
 ### CSP not working properly
@@ -69,6 +81,12 @@ Make sure you have installed the Custom Shaders Patch and that the DLL overrides
 ### Game crashes on startup
 
 Check for the Start Menu shortcut issue using menu option 5. This is a common cause of crashes with Content Manager.
+
+### Graphics issues or poor performance
+
+- Try reinstalling DXVK using menu option 4, or use option 9 for a forced installation
+- In Content Manager, go to Settings > System and ensure "Enable DXVK" is checked
+- You can add `DXVK_HUD=1` to the game launch options to see if DXVK is being used
 
 ## Development
 
@@ -81,7 +99,18 @@ nix develop
 assettocorsa-tool
 ```
 
+## Project Structure
+
+The project is organized as follows:
+- `flake.nix`: Main entry point for the Nix flake
+- `modules/`: Nix modules for packages and development shell
+- `scripts/`: Bash scripts for each component installation
+  - `main.nix`: Main menu and orchestration
+  - `utils.nix`: Shared utility functions
+  - `content-manager.nix`: Content Manager installation
+  - `csp.nix`: Custom Shaders Patch installation
+  - `dxvk.nix`: Enhanced DXVK installation
+
 ## License
 
 MIT
-

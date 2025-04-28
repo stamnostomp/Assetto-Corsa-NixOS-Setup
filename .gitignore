@@ -1,2 +1,5 @@
 /ac_configs/
 /flake.lock
+/result
+/temp
+.direnv/
