@@ -11,6 +11,11 @@ A Nix flake to easily set up Assetto Corsa with Content Manager and Custom Shade
 - Automatic path fixing for Content Manager
 - Multiple Steam installation path detection
 - Supports both App IDs used by Assetto Corsa (244210 and 244930)
+- Wine 64-bit compatibility fixes for black screen issues
+- Content Manager UI black box fixes
+- Steam launch options configuration
+- Advanced diagnostics and troubleshooting tools
+- Optimized for Proton GE compatibility
 
 ## Quick Start
 
@@ -53,6 +58,10 @@ nix run
 7. **Show setup information**: Displays information about your current setup
 8. **Set or change Assetto Corsa path**: Change the path to your Assetto Corsa installation
 9. **Force DXVK installation**: Uses more aggressive methods to ensure DXVK is properly installed
+10. **Run advanced diagnostics and fixes**: Performs comprehensive system checks and offers repair options
+11. **Fix Wine 64-bit compatibility**: Resolves black screen issues with 64-bit Wine prefixes
+12. **Setup Steam launch options**: Configures optimal Steam launch options for DXVK and Proton
+13. **Fix Content Manager UI black boxes**: Resolves UI rendering issues in menus and hamburger button
 
 ## DXVK Installation Improvements
 
@@ -61,8 +70,36 @@ This tool provides enhanced DXVK installation with multiple methods:
 - Manual DLL overrides directly in the Wine registry
 - Optional specific DXVK version (1.10.3 recommended for Assetto Corsa)
 - Force mode to fix potential issues with the standard installation
+- Registry validation and multiple fallback methods
 
-If you experience graphics issues in Content Manager, try using option 9 to force DXVK installation.
+## Wine 64-bit Compatibility
+
+The tool can detect and fix issues with 64-bit Wine prefixes:
+- Automatically detects Wine prefix architecture
+- Creates specialized launcher scripts for Proton GE
+- Sets up proper environment variables for optimal compatibility
+- Creates desktop entries for easy launching
+- Configures Wine with correct library paths
+
+## Content Manager UI Fixes
+
+Resolves common UI rendering issues in Content Manager:
+- Fixes black box issues in menus
+- Resolves rendering problems with the hamburger menu button
+- Configures optimal Windows transparency settings
+- Disables hardware acceleration for UI elements when appropriate
+- Sets correct DXGI wrapper and Direct3D feature level
+
+## Advanced Diagnostics
+
+The diagnostics tool provides comprehensive system checks:
+- Wine and prefix architecture compatibility verification
+- Vulkan support detection and configuration
+- DXVK DLL status verification
+- Emergency direct DXVK installation options
+- Graphics driver recommendations
+- Content Manager settings optimization
+- NixOS-specific configuration suggestions
 
 ## Troubleshooting
 
@@ -82,11 +119,26 @@ Make sure you have installed the Custom Shaders Patch and that the DLL overrides
 
 Check for the Start Menu shortcut issue using menu option 5. This is a common cause of crashes with Content Manager.
 
+### Black screen on startup
+
+If you're experiencing a black screen when launching Content Manager:
+1. Use option 11 to fix Wine 64-bit compatibility issues
+2. Make sure you're using the correct Wine architecture for your prefix
+3. Try using the Proton GE launcher script created by the tool
+
+### UI shows black boxes or rendering issues
+
+If Content Manager's UI has black boxes or hamburger menu problems:
+1. Use option 13 to apply UI rendering fixes
+2. In Content Manager, go to Settings > System and check "Disable windows transparency"
+3. Also disable hardware acceleration for UI if problems persist
+
 ### Graphics issues or poor performance
 
 - Try reinstalling DXVK using menu option 4, or use option 9 for a forced installation
+- Use option 12 to set optimal Steam launch options with DXVK_HUD=full
 - In Content Manager, go to Settings > System and ensure "Enable DXVK" is checked
-- You can add `DXVK_HUD=1` to the game launch options to see if DXVK is being used
+- Use option 10 to run advanced diagnostics and get system-specific recommendations
 
 ## Development
 
@@ -110,6 +162,10 @@ The project is organized as follows:
   - `content-manager.nix`: Content Manager installation
   - `csp.nix`: Custom Shaders Patch installation
   - `dxvk.nix`: Enhanced DXVK installation
+  - `diagnostics.nix`: Advanced system diagnostics
+  - `wine64-fix.nix`: Wine 64-bit compatibility fixes
+  - `steam-launcher.nix`: Steam launch options configuration
+  - `cm-ui-fix.nix`: Content Manager UI rendering fixes
 
 ## License
 
